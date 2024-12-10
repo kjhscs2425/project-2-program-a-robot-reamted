@@ -82,8 +82,12 @@ def closewall():
         
     else:
         print("please tell me left, right, up, or down or end. ")
-    while wall != "end":
+    if wall == "end":
+        return bounce2
+    else:
         pass
+    while wall == "up" or  "down" or "left" or "right":
+        return closewall()
     
         
 
@@ -166,40 +170,36 @@ def limbo():
 
 
 def bounce2():
+    
+    input("say start when you want to start bounce")
     lefturn(45)
-    bounces = input("how many times do you want to bounce for")
-    if bounces >=12:
-        print("after this stuff starts to break down, so lets keep it at 11")
-        bounces = 11
-    else:
-        pass
+    bounces = 15
     bounces = int(bounces)
-    turncounter = 0
     for i in range(bounces):
         left, right = robot.sonars()
         timeleft = left/150
-        print(timeleft)
+        #print(timeleft)
         timeright = right/150
-        print(timeright)
+        #print(timeright)
         if timeleft>timeright:
             ftime = timeright
-            print("right")
+            #print("right")
         elif timeright>timeleft:
-            print("left")
+            #print("left")
             ftime = timeleft
         else:
             print("Nick, Dr Eb, or anybody else who comes across this, how did this happen.")
-        print(ftime)
+        #print(ftime)
 
 
         if ftime >= 0.9 and ftime <=1000:
-            print("WTF")
+            #print("lost of pain here")
             robot.motors(-1, -1 ,1)
         elif ftime <= 0.5:
-            print("0.5")
+            #print("0.5")
             robot.motors(-1, -1, 1)
         else:
-            print("else")
+            #print("else")
 
             robot.motors(1, 1, ftime)
 
