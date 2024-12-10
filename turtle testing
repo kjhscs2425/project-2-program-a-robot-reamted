@@ -1,0 +1,23 @@
+import turtle
+
+turtle.speed(1)
+#turtle.tracer(0, 0)
+
+
+turtle.screensize(660, 440)
+turtle.pensize(200)
+turtle.shape(name="square")
+
+
+
+turtle.forward(100)
+
+
+
+
+
+
+#turtle.update()
+
+turtle.exitonclick()
+
