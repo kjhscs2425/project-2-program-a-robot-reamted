@@ -18,6 +18,7 @@ import time
 
 
 
+
 def lefturn(degrees):
     degrees = degrees/58.8
     robot.motors(1, -1, degrees)
@@ -38,6 +39,8 @@ def right90():
 def start_right_wall():
         robot.motors(1,1,3.8416)
 
+def start_left_wall():
+        robot.motors(1,1,3.3416)
 
 def reverseright():
     robot.motors(-1, -1, 3.8416)
@@ -56,28 +59,34 @@ def closewall():
     wall = input("which wall do you want to get really close to, if you want to end, say end ")
     if wall == "right":
         start_right_wall()
-        print("did not crash lets go!")
+        print("")
         reverseright()
         
         
             
-    if wall == "left":
-        turn180()
-        start_right_wall()
+    elif wall == "left":
+        print("hi")
+        rightturn(90)
+        rightturn(90)
+        start_left_wall()
         print("ha did not crash")
         reverseright()
+        left90()
+        left90()
         
         
-    if wall == "up":
+    elif wall == "up":
         left90()
         start_up_wall()
         print("erm this is actually 153.72475374938272 pixles")
         reverseup()
-    if wall == "down":
+        right90()
+    elif wall == "down":
         right90()
         start_up_wall()
         reverseup()
-    if wall == "end":
+        left90() 
+    elif wall == "end":
         print("glad you had fun")
         
     else:
@@ -171,51 +180,60 @@ def limbo():
 
 def bounce2():
     
-    input("say start when you want to start bounce")
+    input("say anything to start")
     lefturn(45)
     bounces = 15
     bounces = int(bounces)
-    for i in range(bounces):
-        left, right = robot.sonars()
-        timeleft = left/150
-        #print(timeleft)
-        timeright = right/150
-        #print(timeright)
-        if timeleft>timeright:
-            ftime = timeright
-            #print("right")
-        elif timeright>timeleft:
-            #print("left")
-            ftime = timeleft
-        else:
-            print("Nick, Dr Eb, or anybody else who comes across this, how did this happen.")
-        #print(ftime)
+    for i in range(2):
+        for i in range(bounces):
+            left, right = robot.sonars()
+            timeleft = left/150
+            print(timeleft)
+            timeright = right/150
+            print(timeright)
+            if timeleft>timeright:
+                ftime = timeright
+                print("right")
+            elif timeright>timeleft:
+                print("left")
+                ftime = timeleft
+            else:
+                print("Nick, Dr Eb, or anybody else who comes across this, how did this happen.")
+            print(ftime)
 
 
-        if ftime >= 0.9 and ftime <=1000:
-            #print("lost of pain here")
-            robot.motors(-1, -1 ,1)
-        elif ftime <= 0.5:
-            #print("0.5")
-            robot.motors(-1, -1, 1)
-        else:
-            #print("else")
 
-            robot.motors(1, 1, ftime)
+            if ftime >= 0.9 and ftime <=1000:
+                #print("lost of pain here")
+                robot.motors(-1, -1 ,1)
+            elif ftime <= 0.5:
+                #print("0.5")
+                robot.motors(-1, -1, 1)
+            else:
+                #print("else")
 
-        if ftime == timeright:
-            right90()
-        elif ftime == timeleft:
-            left90()
-        else:
-            robot.motors(-1, -1, 1)
+                robot.motors(1, 1, ftime)
+
+            if ftime == timeright:
+                right90()
+            elif ftime == timeleft:
+                left90()
+            else:
+                robot.motors(-1, -1, 1)
+    rightturn(45)
+        
 
         
 
-
-
 closewall()
 bounce2()
+
+      
+      
+      
+      
+      
+
 
 
 
