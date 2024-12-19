@@ -224,25 +224,7 @@ def bounce2():
         
 
         
-def bouncework():
-    bounces = input("how many times do you want to bounce")
-    bounces = int(bounces)
-    for i in range(bounces):
-        lefturn(45)
-        left, right = robot.sonars()
-        print(left, right)
-        if left <= 20:
-            left90()
-            break
-        elif right <= 20:
-            left90()
-            break
-        else:
-            robot.motors(1, 1, 0.1)
-
-
-      
-bouncework()
+closewall()
       
 
 
