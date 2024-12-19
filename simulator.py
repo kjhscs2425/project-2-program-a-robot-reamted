@@ -31,6 +31,9 @@ class Robot:
         else:
             self.driver = RealRobotDriver()  # driver can be a simulator or real robot
 
+    def position(self):
+        return self.driver.x, self.driver.y, self.driver.heading
+
     def motors(self, left, right, seconds):
         """Sends power to each wheel on the robot
 

@@ -34,7 +34,7 @@ def left90():
     robot.motors(1, -1, 1.5319148936170213)
 
 def right90():
-    robot.motors(-1, 1, 1.5319148936170213)
+    robot.motors(-1, 1, 90/58.8)
     
 def start_right_wall():
         robot.motors(1,1,3.8416)
@@ -224,14 +224,25 @@ def bounce2():
         
 
         
+def bouncework():
+    bounces = input("how many times do you want to bounce")
+    bounces = int(bounces)
+    for i in range(bounces):
+        lefturn(45)
+        left, right = robot.sonars()
+        print(left, right)
+        if left <= 20:
+            left90()
+            break
+        elif right <= 20:
+            left90()
+            break
+        else:
+            robot.motors(1, 1, 0.1)
 
-closewall()
-bounce2()
 
       
-      
-      
-      
+bouncework()
       
 
 
