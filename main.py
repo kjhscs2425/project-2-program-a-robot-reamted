@@ -225,7 +225,7 @@ def bounce2():
 
         
 closewall()
-      
+bounce2()
 
 
 
